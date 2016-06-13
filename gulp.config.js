@@ -42,6 +42,14 @@ module.exports = function () {
         },
 
         /**
+         * optimized files
+         */
+        optimized: {
+            app: 'app.js',
+            lib: 'lib.js'
+        },
+
+        /**
          * browser sync
          */
         browserReloadDelay: 1000,
