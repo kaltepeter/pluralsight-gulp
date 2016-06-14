@@ -126,7 +126,7 @@ gulp.task('optimize', ['inject'], function () {
             {
                 starttag: '<!-- inject:templates:js -->'
             }))
-        .pipe($.useref({ searchPath: './'}))
+        .pipe($.useref({searchPath: './'}))
         // filter down to css
         .pipe(cssFilter)
         .pipe($.csso())
@@ -137,11 +137,44 @@ gulp.task('optimize', ['inject'], function () {
         .pipe(jsLibFilter.restore)
 
         .pipe(jsAppFilter)
-        .pipe($.ngAnnotate({ add: true }))
+        .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(jsAppFilter.restore)
+        .pipe($.rev()) // app.js --> app-lj8889jr.js
+        .pipe($.revReplace())
+        .pipe(gulp.dest(config.build))
+        .pipe($.rev.manifest())
 
         .pipe(gulp.dest(config.build));
+});
+
+/**
+ * Bump the version
+ * --type=pre will bump the prerelease vesrion *.*.*-x
+ * --type=patch or no flag will bump the patch version *.*.x
+ * --type=minor will bump the minor version *.x.*
+ * --type=major will bump the major version x.*.*
+ * --version=1.2.3 will bump to a specific version and ignore other flags
+ */
+gulp.task('bump', function () {
+    var msg = 'Bumping versions';
+    var type = args.type;
+    var version = args.version;
+    var options = {};
+
+    if (version) {
+        options.version = version;
+        msg += ' to ' + version;
+    } else {
+        options.type = type;
+        msg += ' for a ' + type;
+    }
+    log(msg);
+    return gulp
+        .src(config.packages)
+        .pipe($.print())
+        .pipe($.bump(options))
+        .pipe(gulp.dest(config.root));
 });
 
 gulp.task('serve-build', ['optimize'], function () {
@@ -199,7 +232,7 @@ function startBrowserSync(isDev) {
 
     log('Starting browser-sync on port ' + port);
 
-    if(isDev) {
+    if (isDev) {
         gulp.watch([config.less], ['styles'])
             .on('change', function (event) {
                 changeEvent(event);
