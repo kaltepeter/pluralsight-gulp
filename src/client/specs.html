@@ -38,6 +38,10 @@
     <script src="/node_modules/sinon-chai/lib/sinon-chai.js"></script>
     <!-- endinject -->
 
+<script type="text/javascript" src="jasmine/lib/jasmine-2.0.0/jasmine.js"></script>
+<script type="text/javascript" src="jasmine/lib/jasmine-2.0.0/jasmine-html.js"></script>
+<script type="text/javascript" src="jasmine/lib/jasmine-2.0.0/boot.js"></script>
+
     <script>
         expect = chai.expect;
         AssertionError = chai.AssertionError;
@@ -63,20 +67,20 @@
 
     <!-- inject:js -->
     <script src="/src/client/app/app.module.js"></script>
-    <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/customers/customers.module.js"></script>
+    <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
     <script src="/src/client/app/blocks/exception/exception.module.js"></script>
-    <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
-    <script src="/src/client/app/core/config.js"></script>
-    <script src="/src/client/app/core/constants.js"></script>
-    <script src="/src/client/app/core/dataservice.js"></script>
+    <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/customers/customer-detail.controller.js"></script>
     <script src="/src/client/app/customers/customers.controller.js"></script>
     <script src="/src/client/app/customers/customers.route.js"></script>
+    <script src="/src/client/app/core/config.js"></script>
+    <script src="/src/client/app/core/constants.js"></script>
+    <script src="/src/client/app/core/dataservice.js"></script>
     <script src="/src/client/app/dashboard/dashboard.controller.js"></script>
     <script src="/src/client/app/dashboard/dashboard.route.js"></script>
     <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
@@ -87,8 +91,8 @@
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
     <script src="/src/client/app/blocks/exception/exception-handler.provider.js"></script>
     <script src="/src/client/app/blocks/exception/exception.js"></script>
-    <script src="/src/client/app/blocks/logger/logger.js"></script>
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
+    <script src="/src/client/app/blocks/logger/logger.js"></script>
     <!-- endinject -->
 
     <!-- inject:spechelpers:js -->
@@ -97,17 +101,16 @@
     <!-- endinject -->
 
     <!-- inject:specs:js -->
-    <script src="/src/client/app/core/dataservice.spec.js"></script>
     <script src="/src/client/app/customers/customer-detail.controller.spec.js"></script>
     <script src="/src/client/app/customers/customers.controller.spec.js"></script>
     <script src="/src/client/app/customers/customers.route.spec.js"></script>
+    <script src="/src/client/app/core/dataservice.spec.js"></script>
     <script src="/src/client/app/dashboard/dashboard.controller.spec.js"></script>
     <script src="/src/client/app/dashboard/dashboard.route.spec.js"></script>
     <script src="/src/client/app/layout/ht-sidebar.directive.spec.js"></script>
     <script src="/src/client/app/layout/shell.controller.spec.js"></script>
     <script src="/src/client/app/layout/sidebar.controller.spec.js"></script>
     <script src="/src/client/app/blocks/exception/exception-handler.provider.spec.js"></script>
-    <script src="/src/client/tests/server-integration/dataservice.spec.js"></script>
     <!-- endinject -->
 
     <!-- inject:templates:js -->
